@@ -16,4 +16,14 @@ class Feedback
         $this->nota = $nota;
         $this->depoimento = $depoimento;
     }
+
+    public function recuperarDepoimento(): ?string
+    {
+        return $this->depoimento;
+    }
+
+    public function recuperarNota(): int
+    {
+        return $this->nota;
+    }
 }
