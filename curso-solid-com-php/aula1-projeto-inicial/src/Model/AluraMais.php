@@ -4,7 +4,7 @@ namespace Alura\Solid\Model;
 
 use JetBrains\PhpStorm\Pure;
 
-class AluraMais extends Video implements Pontuavel
+class AluraMais extends Video implements Pontuavel, Assistivel
 {
     private $categoria;
 
