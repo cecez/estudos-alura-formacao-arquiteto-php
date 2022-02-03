@@ -4,4 +4,5 @@ docker build -t php-003 .
 docker run -it --volume $PWD:/usr/src/myapp --name php-003-rodando php-003
 ```
 
-phpunit
+- Nunca use (ou pelo menos evite) getters e setters.
+  - Utilizar métodos de acesso a nossas propriedades faz sentido, desde que nós não utilizemos o retorno para tomar decisões que poderiam estar encapsuladas na classe.
