@@ -2,6 +2,7 @@
 # composer install
 docker build -t php-003 .
 docker run -it --volume $PWD:/usr/src/myapp --name php-003-rodando php-003
+docker start php-003-rodando
 ```
 
 # Boas práticas
@@ -11,3 +12,5 @@ docker run -it --volume $PWD:/usr/src/myapp --name php-003-rodando php-003
   - extrair métodos quando necessário
 - Nunca usar else 
   - usar early return, fail fast
+- Envolva tipos primitivos / estruturas de dados (quando houver comportamento)
+  - ex: email: string - > Email
