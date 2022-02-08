@@ -12,5 +12,7 @@ docker start php-003-rodando
   - extrair métodos quando necessário
 - Nunca usar else 
   - usar early return, fail fast
-- Envolva tipos primitivos / estruturas de dados (quando houver comportamento)
+- Envolva tipos primitivos (quando houver comportamento)
   - ex: email: string - > Email
+- Coleções de primeira classe (First-class collections)
+  - Ao envolver uma estrutura de dados, deixa-la como único atributo da classe

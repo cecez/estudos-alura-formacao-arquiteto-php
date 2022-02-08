@@ -6,16 +6,21 @@ use Alura\Calisthenics\Domain\Student\Student;
 
 class InMemoryVideoRepository implements VideoRepository
 {
-    private array $videos;
+    private VideoList $videos;
+
+    public function __construct()
+    {
+        $this->videos = new VideoList();
+    }
 
     public function add(Video $video): void
     {
-        $this->videos[] = $video;
+        $this->videos->put($video);
     }
 
     public function videosFor(Student $student): array
     {
         $today = new \DateTimeImmutable();
-        return array_filter($this->videos, fn (Video $video) => $video->getAgeLimit() <= $student->getBd()->diff($today)->y);
+        return array_filter($this->videos->get(), fn (Video $video) => $video->getAgeLimit() <= $student->getBd()->diff($today)->y);
     }
 }
