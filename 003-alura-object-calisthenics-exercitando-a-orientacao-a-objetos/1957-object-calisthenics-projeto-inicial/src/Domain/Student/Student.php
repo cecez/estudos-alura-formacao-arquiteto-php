@@ -10,45 +10,38 @@ use DateTimeInterface;
 class Student
 {
     private Email $email;
-    private DateTimeInterface $bd;
+    private DateTimeInterface $birthDate;
     private WatchedVideos $watchedVideos;
-    private string $fName;
-    private string $lName;
-    public string $street;
-    public string $number;
-    public string $province;
-    public string $city;
-    public string $state;
-    public string $country;
+    private FullName $fullName;
+    private Address $address;
 
-    public function __construct(Email $email, DateTimeInterface $bd, string $fName, string $lName, string $street, string $number, string $province, string $city, string $state, string $country)
+    public function __construct(Email $email, DateTimeInterface $birthDate, FullName $fullName, Address $address)
     {
         $this->watchedVideos = new WatchedVideos();
         $this->email = $email;
-        $this->bd = $bd;
-        $this->fName = $fName;
-        $this->lName = $lName;
-        $this->street = $street;
-        $this->number = $number;
-        $this->province = $province;
-        $this->city = $city;
-        $this->state = $state;
-        $this->country = $country;
+        $this->birthDate = $birthDate;
+        $this->fullName = $fullName;
+        $this->address = $address;
     }
 
-    public function getFullName(): string
+    public function fullName(): string
     {
-        return "{$this->fName} {$this->lName}";
+        return $this->fullName;
     }
 
-    public function getEmail(): string
+    public function address(): string
+    {
+        return $this->address;
+    }
+
+    public function email(): string
     {
         return $this->email;
     }
 
-    public function getBd(): DateTimeInterface
+    public function birthDate(): DateTimeInterface
     {
-        return $this->bd;
+        return $this->birthDate;
     }
 
     public function watch(Video $video, DateTimeInterface $date)
@@ -76,7 +69,7 @@ class Student
     public function age(): int
     {
         $today = new \DateTimeImmutable();
-        $dateInterval = $this->bd->diff($today);
+        $dateInterval = $this->birthDate->diff($today);
         return $dateInterval->y;
     }
 }

@@ -16,3 +16,8 @@ docker start php-003-rodando
   - ex: email: string - > Email
 - Coleções de primeira classe (First-class collections)
   - Ao envolver uma estrutura de dados, deixa-la como único atributo da classe
+- Apenas 1 "ponto" (operador de acesso, PHP "->") por linha
+  - exceção: interface fluente "return self" ($obj->select()->where()->limit())
+  - lei de Demeter
+- NUNCA abrevie
+- Mantenha pacotes (máx 10 itens) / classes (máx 50 linhas) / métodos (máx tela?) pequenos 
