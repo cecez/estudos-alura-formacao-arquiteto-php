@@ -39,11 +39,6 @@ class Student
         return $this->email;
     }
 
-    public function birthDate(): DateTimeInterface
-    {
-        return $this->birthDate;
-    }
-
     public function watch(Video $video, DateTimeInterface $date)
     {
         $this->watchedVideos->add($video, $date);

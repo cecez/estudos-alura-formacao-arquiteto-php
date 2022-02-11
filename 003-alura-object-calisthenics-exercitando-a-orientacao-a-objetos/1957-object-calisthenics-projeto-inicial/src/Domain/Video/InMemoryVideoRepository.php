@@ -3,12 +3,13 @@
 namespace Alura\Calisthenics\Domain\Video;
 
 use Alura\Calisthenics\Domain\Student\Student;
+use JetBrains\PhpStorm\Pure;
 
 class InMemoryVideoRepository implements VideoRepository
 {
     private VideoList $videos;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->videos = new VideoList();
     }
@@ -22,7 +23,7 @@ class InMemoryVideoRepository implements VideoRepository
     {
         return array_filter(
             $this->videos->get(),
-            fn (Video $video) => $video->getAgeLimit() <= $student->age()
+            fn (Video $video) => $video->ageLimit() <= $student->age()
         );
     }
 }
