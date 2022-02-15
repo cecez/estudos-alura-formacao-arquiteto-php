@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Calisthenics\Domain\Student;
+namespace Alura\Calisthenics\Domain\Person;
 
 class Address
 {

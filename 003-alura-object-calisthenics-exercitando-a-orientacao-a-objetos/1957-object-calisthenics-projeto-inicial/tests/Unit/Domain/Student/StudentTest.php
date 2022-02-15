@@ -3,8 +3,9 @@
 namespace Alura\Calisthenics\Tests\Unit\Domain\Student;
 
 use Alura\Calisthenics\Domain\Email\Email;
-use Alura\Calisthenics\Domain\Student\Address;
-use Alura\Calisthenics\Domain\Student\FullName;
+use Alura\Calisthenics\Domain\Person\Address;
+use Alura\Calisthenics\Domain\Person\FullName;
+use Alura\Calisthenics\Domain\Person\PersonalData;
 use Alura\Calisthenics\Domain\Student\Student;
 use Alura\Calisthenics\Domain\Video\Video;
 use PHPUnit\Framework\TestCase;
@@ -15,12 +16,14 @@ class StudentTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->student = new Student(
-            new Email('email@example.com'),
+        $personalData = new PersonalData(
+            new Address('Rua de Exemplo', '71B', 'Minha Cidade', 'Meu Bairro', 'Meu estado', 'Brasil'),
             new \DateTimeImmutable('1997-10-15'),
-            new FullName('Cezar', 'Rosa'),
-            new Address('Rua de Exemplo', '71B', 'Minha Cidade', 'Meu Bairro', 'Meu estado', 'Brasil')
+            new Email('email@example.com'),
+            new FullName('Cezar', 'Rosa')
         );
+
+        $this->student = new Student($personalData);
     }
 
     public function testStudentHasACorrectFullName()

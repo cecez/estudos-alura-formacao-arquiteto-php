@@ -2,41 +2,20 @@
 
 namespace Alura\Calisthenics\Domain\Student;
 
-use Alura\Calisthenics\Domain\Email\Email;
+use Alura\Calisthenics\Domain\Person\Person;
+use Alura\Calisthenics\Domain\Person\PersonalData;
 use Alura\Calisthenics\Domain\Video\Video;
 use DateTimeImmutable;
 use DateTimeInterface;
 
-class Student
+class Student extends Person
 {
-    private Email $email;
-    private DateTimeInterface $birthDate;
     private WatchedVideos $watchedVideos;
-    private FullName $fullName;
-    private Address $address;
 
-    public function __construct(Email $email, DateTimeInterface $birthDate, FullName $fullName, Address $address)
+    public function __construct(PersonalData $personalData)
     {
+        parent::__construct($personalData);
         $this->watchedVideos = new WatchedVideos();
-        $this->email = $email;
-        $this->birthDate = $birthDate;
-        $this->fullName = $fullName;
-        $this->address = $address;
-    }
-
-    public function fullName(): string
-    {
-        return $this->fullName;
-    }
-
-    public function address(): string
-    {
-        return $this->address;
-    }
-
-    public function email(): string
-    {
-        return $this->email;
     }
 
     public function watch(Video $video, DateTimeInterface $date)
@@ -46,7 +25,7 @@ class Student
 
     public function hasAccess(): bool
     {
-        if ($this->watchedVideos->count() === 0) {
+        if ($this->watchedVideos->isEmpty()) {
             return true;
         }
 
@@ -57,14 +36,8 @@ class Student
     {
         $firstDate = $this->watchedVideos->dateOfFirstWatchedVideo();
         $today = new DateTimeImmutable();
+        $intervalOfDays = $firstDate->diff($today);
 
-        return $firstDate->diff($today)->days < 90;
-    }
-
-    public function age(): int
-    {
-        $today = new \DateTimeImmutable();
-        $dateInterval = $this->birthDate->diff($today);
-        return $dateInterval->y;
+        return $intervalOfDays->days < 90;
     }
 }
