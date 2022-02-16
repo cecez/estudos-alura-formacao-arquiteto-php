@@ -18,7 +18,7 @@ class Student extends Person
         $this->watchedVideos = new WatchedVideos();
     }
 
-    public function watch(Video $video, DateTimeInterface $date)
+    public function watch(Video $video, DateTimeInterface $date): void
     {
         $this->watchedVideos->add($video, $date);
     }

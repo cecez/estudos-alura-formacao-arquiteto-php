@@ -26,16 +26,6 @@ class StudentTest extends TestCase
         $this->student = new Student($personalData);
     }
 
-    public function testStudentHasACorrectFullName()
-    {
-        self::assertEquals('Cezar Rosa', $this->student->fullName());
-    }
-
-    public function testStudentHasACorrectAddress()
-    {
-        self::assertEquals('Rua de Exemplo, 71B (Meu Bairro) Minha Cidade/Meu estado - Brasil', $this->student->address());
-    }
-
     public function testStudentWithoutWatchedVideosHasAccess()
     {
         self::assertTrue($this->student->hasAccess());
