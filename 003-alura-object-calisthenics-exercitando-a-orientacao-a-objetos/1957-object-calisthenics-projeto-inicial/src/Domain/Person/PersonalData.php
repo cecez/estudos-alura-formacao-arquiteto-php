@@ -38,6 +38,11 @@ class PersonalData
         return $dateInterval->y;
     }
 
+    public function birthDate(): DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
     public function email(): string
     {
         return $this->email;

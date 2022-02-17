@@ -2,6 +2,7 @@
 
 namespace Alura\Calisthenics\Domain\Person;
 
+use DateTimeInterface;
 use JetBrains\PhpStorm\Pure;
 
 class Person
@@ -21,6 +22,11 @@ class Person
     public function age(): int
     {
         return $this->personalData->age();
+    }
+
+    #[Pure] public function birthDate(): DateTimeInterface
+    {
+        return $this->personalData->birthDate();
     }
 
     #[Pure] public function email(): string
