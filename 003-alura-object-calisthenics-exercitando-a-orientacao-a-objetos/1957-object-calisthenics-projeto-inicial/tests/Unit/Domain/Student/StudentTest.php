@@ -64,4 +64,11 @@ class StudentTest extends TestCase
 
         self::assertFalse($this->student->hasAccess());
     }
+
+    public function testInvalidCreationOfAStudent()
+    {
+        self::expectErrorMessageMatches('/Too few arguments/');
+
+        new Student();
+    }
 }
