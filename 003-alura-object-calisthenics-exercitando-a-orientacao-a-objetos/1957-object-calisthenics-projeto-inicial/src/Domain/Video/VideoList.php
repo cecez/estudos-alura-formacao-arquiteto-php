@@ -4,6 +4,9 @@ namespace Alura\Calisthenics\Domain\Video;
 
 class VideoList
 {
+    /**
+     * @var Video[]
+     */
     private array $videos;
 
     public function __construct()
@@ -16,7 +19,10 @@ class VideoList
         $this->videos[] = $video;
     }
 
-    public function get(): array
+    /**
+     * @return Video[]
+     */
+    public function get()
     {
         return $this->videos;
     }

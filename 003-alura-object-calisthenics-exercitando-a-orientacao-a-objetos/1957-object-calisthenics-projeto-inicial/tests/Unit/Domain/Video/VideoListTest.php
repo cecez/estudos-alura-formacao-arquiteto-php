@@ -17,7 +17,7 @@ class VideoListTest extends TestCase
 
     public function testEmptyVideoList()
     {
-        self::assertEquals([], $this->videoList->get());
+        self::assertCount(0, $this->videoList->get());
     }
 
     public function testIfStoreAVideoIsCorrect()
@@ -27,5 +27,16 @@ class VideoListTest extends TestCase
         $this->videoList->put(new Video());
 
         self::assertCount(3, $this->videoList->get());
+    }
+
+    public function testIfTryingToManipulateVideoListArrayCanChangeVideoList()
+    {
+        $meuArrayDeVideos = $this->videoList->get();
+
+        $meuArrayDeVideos[] = 'isso não vai dar nenhum problema';
+        $meuArrayDeVideos[] = 'pode ficar tranquilo';
+
+        self::assertCount(0, $this->videoList->get());
+        self::assertCount(2, $meuArrayDeVideos);
     }
 }
